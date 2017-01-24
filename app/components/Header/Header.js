@@ -1,11 +1,11 @@
 import React from 'react';
-import './header-style';
+import './header-style.css';
 
 import Button from '../Button/Button';
 
 const logStuff = () => {
-  console.log("clicked!");
-}
+  console.log('clicked!');
+};
 
 const Header = () => {
   return (
@@ -14,6 +14,6 @@ const Header = () => {
       <Button handleClick={() => logStuff()} />
     </div>
   );
-}
+};
 
 export default Header;

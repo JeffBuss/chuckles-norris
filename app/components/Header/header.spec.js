@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-import {expect} from 'chai';
-import sinon from 'sinon'
+import { expect } from 'chai';
+import sinon from 'sinon';
 
 import Header from './Header';
 import Button from '../Button/Button';
@@ -13,7 +13,7 @@ describe('<Header/>', () => {
   });
 
   it('should trigger our logStuff function', () => {
-    const logStuff = sinon.spy()
+    const logStuff = sinon.spy();
     const wrapper = mount(<Button handleClick={logStuff} />);
     wrapper.simulate('click');
     expect(logStuff.calledOnce).to.equal(true);

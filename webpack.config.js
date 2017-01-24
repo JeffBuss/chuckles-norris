@@ -2,7 +2,7 @@ module.exports = {
   entry: './app',
   output: {
     path: './build',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
     loaders: [
@@ -13,18 +13,18 @@ module.exports = {
       },
       { test: /\.css$/, loader: 'style!css' },
       { test: /\.scss$/, loader: 'style!css!sass' },
-    ]
+    ],
   },
   devServer: {
     contentBase: './build',
-    inline: true
+    inline: true,
   },
   resolve: {
-    extensions: ['', '.js', '.json', '.jsx', '.css', '.scss']
+    extensions: ['', '.js', '.json', '.jsx', '.css', '.scss'],
   },
   externals: {
-  'cheerio': 'window',
-  'react/lib/ExecutionEnvironment': true,
-  'react/lib/ReactContext': true,
+    'cheerio': 'window',
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true,
   },
-}
+};

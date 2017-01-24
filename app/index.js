@@ -1,8 +1,8 @@
-import React from 'react'
-import { render } from 'react-dom'
-import './styles';
+import React from 'react';
+import { render } from 'react-dom';
+import './styles.css';
 
-import Header from './components/Header/Header'
+import Header from './components/Header/Header';
 
 const App = () => {
   return (
@@ -10,6 +10,6 @@ const App = () => {
       <Header />
     </div>
   );
-}
+};
 
-render(<App />, document.querySelector(".application"));
+render(<App />, document.querySelector('.application'));
