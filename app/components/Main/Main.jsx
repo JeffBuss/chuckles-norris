@@ -17,21 +17,27 @@ export default class Main extends Component {
       url: 'http://api.icndb.com/jokes/random/',
     };
     this.getRandomJoke = this.getRandomJoke.bind(this);
+    this.getJokes = this.getJokes.bind(this);
   }
 
   componentDidMount() {
-    FetchJoke(this.state.url, 5, this.getRandomJoke);
+    FetchJoke(this.state.url, 1, this.getRandomJoke);
   }
 
-  getRandomJoke(data) {
-    this.setState({ randomJoke: data });
+  getRandomJoke(joke) {
+    this.setState({ randomJoke: joke });
+  }
+
+  getJokes(jokes) {
+    this.setState({ jokes: jokes })
   }
 
   handleChange(e) {
-    this.setState({ jokesCount: e.target.value })
+    this.setState({ jokesCount: e.target.value });
   }
+  
   handleClick() {
-    console.log('JokeButton');
+    FetchJoke(this.state.url, this.state.jokesCount, this.getJokes);
   }
 
   render() {
