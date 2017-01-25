@@ -1,8 +1,9 @@
-const FetchJoke = (url, func) => {
-  fetch(url, { method: 'get' })
-  .then(response => response.json())
-  .then(RandomJoke => RandomJoke.value.joke)
-  .then(joke => func(joke))
+const FetchJoke = (url) => {
+  fetch(url).then((response) => {
+    return response.json();
+  }).then((data) => {
+    return (data.value.joke);
+  });
 };
 
 export default FetchJoke;
