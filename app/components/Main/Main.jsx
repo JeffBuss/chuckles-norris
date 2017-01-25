@@ -11,25 +11,42 @@ export default class Main extends Component {
   constructor() {
     super();
     this.state = {
-      RandomJoke: '',
+      randomJoke: '',
+      jokes: [],
+      jokesCount: 5,
     };
   }
 
   componentDidMount() {
+    this.setState({ randomJoke: this.getJokes() })
+  }
+
+  getJokes() {
     fetch('http://api.icndb.com/jokes/random').then((response) => {
       return response.json();
     }).then((data) => {
-      this.setState({ RandomJoke: data.value.joke });
+      this.setState({ randomJoke: data.value.joke });
     });
+  }
+  handleChange() {
+    this.setState({ jokesCount: e.target.value })
+  }
+  handleClick() {
+    console.log('JokeButton');
   }
 
   render() {
     return (
       <div>
         <Header />
-        <span>{this.state.RandomJoke}</span><br/>
-        <JokeCount />
-        <JokeButton />
+        <span>{this.state.randomJoke}</span><br/>
+        <JokeCount
+          handleChange={this.handleChange.bind(this)}
+          handleKeyUp={(e) => {}}
+        />
+        <JokeButton
+          handleClick={this.handleClick.bind(this)}
+        />
         <FavoriteButton />
       </div>
     );

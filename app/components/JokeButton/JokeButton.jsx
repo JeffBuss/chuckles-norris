@@ -1,12 +1,8 @@
 import React from 'react';
 
-const handleClick = () => {
-  console.log('JokeButton');
-};
-
-const JokeButton = (props) => {
+const JokeButton = ({ handleClick }) => {
   return (
-    <button onClick={() => handleClick() }>New Jokes</button>
+    <button onClick={handleClick}>New Jokes</button>
   );
 };
 
