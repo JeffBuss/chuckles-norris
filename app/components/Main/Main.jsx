@@ -18,17 +18,23 @@ export default class Main extends Component {
   }
 
   componentDidMount() {
-    this.setState({ randomJoke: this.getJokes() })
+    this.setState({ randomJoke: this.getRandomJoke() })
   }
 
-  getJokes() {
+  getRandomJoke() {
     fetch('http://api.icndb.com/jokes/random').then((response) => {
       return response.json();
     }).then((data) => {
       this.setState({ randomJoke: data.value.joke });
     });
   }
-  handleChange() {
+
+  getJokes(url+{this.state.jokesCount}) {
+    fetch(url).then((response) => {
+      return response
+    })
+  }
+  handleChange(e) {
     this.setState({ jokesCount: e.target.value })
   }
   handleClick() {
