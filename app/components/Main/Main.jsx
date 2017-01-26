@@ -13,11 +13,14 @@ export default class Main extends Component {
     this.state = {
       randomJoke: '',
       jokes: [],
+      favorites: [],
       jokesCount: 5,
       url: 'http://api.icndb.com/jokes/random/',
     };
     this.getRandomJoke = this.getRandomJoke.bind(this);
     this.getJokes = this.getJokes.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -29,13 +32,13 @@ export default class Main extends Component {
   }
 
   getJokes(jokes) {
-    this.setState({ jokes: jokes })
+    this.setState({ jokes });
   }
 
   handleChange(e) {
     this.setState({ jokesCount: e.target.value });
   }
-  
+
   handleClick() {
     FetchJoke(this.state.url, this.state.jokesCount, this.getJokes);
   }
@@ -46,11 +49,11 @@ export default class Main extends Component {
         <Header />
         <span>{this.state.randomJoke}</span><br/>
         <JokeCount
-          handleChange={this.handleChange.bind(this)}
+          handleChange={this.handleChange}
           handleKeyUp={(e) => {}}
         />
         <JokeButton
-          handleClick={this.handleClick.bind(this)}
+          handleClick={this.handleClick}
         />
         <FavoriteButton />
       </div>
