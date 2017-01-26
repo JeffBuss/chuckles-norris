@@ -8,6 +8,7 @@ import JokeCount from '../JokeCount/JokeCount';
 import FetchJoke from '../Helpers/FetchJoke';
 import Jokes from '../Jokes/Jokes';
 import Settings from '../Settings/Settings';
+import Favorites from '../Jokes/Favorites';
 
 export default class Main extends Component {
   constructor() {
@@ -107,6 +108,7 @@ export default class Main extends Component {
           handleReset={this.handleReset}
           handleExplicit={this.handleExplicit}
         />
+        <Favorites />
         <Jokes
           jokes={this.state.jokes}
         />
