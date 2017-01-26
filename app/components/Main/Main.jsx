@@ -6,6 +6,7 @@ import JokeButton from '../JokeButton/JokeButton';
 import FavoriteButton from '../FavoriteButton/FavoriteButton';
 import JokeCount from '../JokeCount/JokeCount';
 import FetchJoke from '../Helpers/FetchJoke';
+import Jokes from '../Jokes/Jokes';
 
 export default class Main extends Component {
   constructor() {
@@ -56,6 +57,10 @@ export default class Main extends Component {
           handleClick={this.handleClick}
         />
         <FavoriteButton />
+        <Jokes
+          jokes={this.state.jokes}
+        />
+        {/* <div className='textBox'>{React.cloneElement(this.props.children, this.state)}</div> */}
       </div>
     );
   }
