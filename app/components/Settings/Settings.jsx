@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Settings = ({ handleSettings, handleName, handleNameSet, handleReset }) => {
+const Settings = ({ handleSettings, handleName, handleNameSet, handleReset, handleExplicit }) => {
   return (
     <div>
       <button onClick={handleSettings}>Settings</button>
@@ -9,6 +9,7 @@ const Settings = ({ handleSettings, handleName, handleNameSet, handleReset }) =>
       </input>
       <button onClick={handleNameSet}>Set</button>
       <button onClick={handleReset}>Reset</button>
+      <input onClick={handleExplicit} type='checkbox'/>
     </div>
   );
 };

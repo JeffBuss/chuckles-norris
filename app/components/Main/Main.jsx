@@ -18,6 +18,8 @@ export default class Main extends Component {
       favorites: [],
       jokesCount: 5,
       url: 'http://api.icndb.com/jokes/random/',
+      name: '',
+      explicit: false,
     };
     this.getRandomJoke = this.getRandomJoke.bind(this);
     this.getJokes = this.getJokes.bind(this);
@@ -27,6 +29,7 @@ export default class Main extends Component {
     this.handleName = this.handleName.bind(this);
     this.handleNameSet = this.handleNameSet.bind(this);
     this.handleReset = this.handleReset.bind(this);
+    this.handleExplicit = this.handleExplicit.bind(this);
   }
 
   componentDidMount() {
@@ -65,6 +68,12 @@ export default class Main extends Component {
     console.log('handleReset');
   }
 
+  handleExplicit() {
+    console.log('handleExplicit');
+  }
+
+
+
   render() {
     return (
       <div>
@@ -83,6 +92,7 @@ export default class Main extends Component {
           handleName={this.handleName}
           handleNameSet={this.handleNameSet}
           handleReset={this.handleReset}
+          handleExplicit={this.handleExplicit}
         />
         <Jokes
           jokes={this.state.jokes}
