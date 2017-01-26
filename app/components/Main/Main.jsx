@@ -7,6 +7,7 @@ import FavoriteButton from '../FavoriteButton/FavoriteButton';
 import JokeCount from '../JokeCount/JokeCount';
 import FetchJoke from '../Helpers/FetchJoke';
 import Jokes from '../Jokes/Jokes';
+import Settings from '../Settings/Settings';
 
 export default class Main extends Component {
   constructor() {
@@ -22,6 +23,10 @@ export default class Main extends Component {
     this.getJokes = this.getJokes.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleSettings = this.handleSettings.bind(this);
+    this.handleName = this.handleName.bind(this);
+    this.handleNameSet = this.handleNameSet.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
 
   componentDidMount() {
@@ -44,6 +49,22 @@ export default class Main extends Component {
     FetchJoke(this.state.url, this.state.jokesCount, this.getJokes);
   }
 
+  handleSettings() {
+    console.log('handleSettings');
+  }
+
+  handleName(e) {
+    this.setState({ name: e.target.value });
+  }
+
+  handleNameSet() {
+    console.log('handleNameSet');
+  }
+
+  handleReset() {
+    console.log('handleReset');
+  }
+
   render() {
     return (
       <div>
@@ -57,6 +78,12 @@ export default class Main extends Component {
           handleClick={this.handleClick}
         />
         <FavoriteButton />
+        <Settings
+          handleSettings={this.handleSettings}
+          handleName={this.handleName}
+          handleNameSet={this.handleNameSet}
+          handleReset={this.handleReset}
+        />
         <Jokes
           jokes={this.state.jokes}
         />
