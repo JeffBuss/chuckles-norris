@@ -56,12 +56,21 @@ export default class Main extends Component {
     console.log('handleSettings');
   }
 
+  setName() {
+    const newName = this.state.name.split('');
+    const firstName = newName[0];
+    const lastName = newName[1];
+    this.setState({ url: `http://api.icndb.com/jokes/random?escape=javascript&firstName=
+      ${firstName}&lastName=${lastName}` },
+      FetchJoke(this.state.url, this.getJokes));
+  }
+
   handleName(e) {
     this.setState({ name: e.target.value });
   }
 
   handleNameSet() {
-    console.log('handleNameSet');
+    this.setName();
   }
 
   handleReset() {
@@ -97,7 +106,6 @@ export default class Main extends Component {
         <Jokes
           jokes={this.state.jokes}
         />
-        {/* <div className='textBox'>{React.cloneElement(this.props.children, this.state)}</div> */}
       </div>
     );
   }
