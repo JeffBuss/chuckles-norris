@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { render } from 'react-dom';
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory, IndexRedirect } from 'react-router';
-import './styles.css';
+import './styles.scss';
 
 import Main from './components/Main/Main';
 import Jokes from './components/Jokes/Jokes';

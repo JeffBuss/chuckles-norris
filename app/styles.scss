@@ -1,68 +1,79 @@
 body {
-  background: #fafafa;
+  background-color: #fafafa;
   font-family: sans-serif;
 }
 
-/*variables*/
-$bodyFont: 'Karla', sans-serif;
-$headerFont: 'Bungee Shade', cursive;
-$headerBG: rgba(255, 255, 255, 0.3);
-$bodyBG: rgb(29,53,63);
-
-@mixin buttonStyles {
-  &:hover {
-        cursor: pointer;
-        background-color: rgb(255, 255, 255);
-    }
-  background-color: rgb(192, 192, 192);
-  margin: 1vw;
-  width: 23vw;
-  height: 5vh;
-  border-radius: 5px;
-  border-style: none;
-  max-width: 150px;
-}
-
-@mixin inputStyles {
-  margin: 1vw;
-  width: 50%;
-  height: 5vh;
-  border-radius: 5px;
-}
-
-@mixin bodyStyles {
-  font-family: $bodyFont;
-  background: $bodyBG;
-  color: white;
-}
-
-@mixin headerStyles {
-  font-family: $headerFont
-  background-color: $headerBG
-  font-size: 25px;
-  color: white;
-}
-
-@mixin cardStyles {
-
-}
-
-/*favorite*/
-
-/*header*/
-
-/*joke*/
-
-/*jokes*/
-
-/*jokebutton*/
-
-/*jokecount*/
-
-/*main*/
-
-random-joke {
-  border: 1px dotted white;
-}
-
-/*settings*/
+// /*variables*/
+// $bodyFont: 'Karla', sans-serif;
+// $headerFont: 'Bungee Shade', cursive;
+// $headerBG: rgba(255, 255, 255, 0.3);
+// $bodyBG: rgb(29,53,63);
+// $cardBG: rbga(0, 0, 0, 0.2);
+//
+// @mixin buttonStyles {
+//   &:hover {
+//         cursor: pointer;
+//         background-color: rgb(255, 255, 255);
+//     }
+//   background-color: rgb(192, 192, 192);
+//   margin: 1vw;
+//   width: 23vw;
+//   height: 5vh;
+//   border-radius: 5px;
+//   border-style: none;
+//   max-width: 150px;
+// }
+//
+// @mixin inputStyles {
+//   margin: 1vw;
+//   width: 50%;
+//   height: 5vh;
+//   border-radius: 5px;
+// }
+//
+// @mixin bodyStyles {
+//   font-family: $bodyFont;
+//   background: $bodyBG;
+//   color: white;
+// }
+//
+// @mixin headerStyles {
+//   font-family: $headerFont;
+//   background-color: $headerBG;
+//   font-size: 25px;
+//   color: white;
+// }
+//
+// @mixin cardStyles {
+//   background-color: red;
+// }
+//
+// /*favorite*/
+//
+// /*header*/
+//
+// /*joke*/
+//
+// .joke-card {
+//   background-color: red;
+//
+// }
+//
+// .favorite-star {
+//   background-color: red;
+//
+// }
+//
+// /*jokes*/
+//
+// /*jokebutton*/
+//
+// /*jokecount*/
+//
+// /*main*/
+//
+// random-joke {
+//   border: 1px dotted white;
+// }
+//
+// /*settings*/
