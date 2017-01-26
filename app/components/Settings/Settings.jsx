@@ -9,7 +9,7 @@ const Settings = ({ handleSettings, handleName, handleNameSet, handleReset, hand
       </input>
       <button onClick={handleNameSet}>Set</button>
       <button onClick={handleReset}>Reset</button>
-      <input onClick={handleExplicit} type='checkbox'/>
+      <input onChange={handleExplicit} type='checkbox' value=''/>
     </div>
   );
 };

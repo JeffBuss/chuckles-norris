@@ -17,7 +17,7 @@ export default class Main extends Component {
       jokes: [],
       favorites: [],
       jokesCount: 5,
-      url: 'http://api.icndb.com/jokes/random/',
+      url: 'http://api.icndb.com/jokes/random',
       name: '',
       explicit: false,
     };
@@ -56,15 +56,6 @@ export default class Main extends Component {
     console.log('handleSettings');
   }
 
-  setName() {
-    const newName = this.state.name.split('');
-    const firstName = newName[0];
-    const lastName = newName[1];
-    this.setState({ url: `http://api.icndb.com/jokes/random?escape=javascript&firstName=
-      ${firstName}&lastName=${lastName}` },
-      FetchJoke(this.state.url, this.getJokes));
-  }
-
   handleName(e) {
     this.setState({ name: e.target.value });
   }
@@ -73,15 +64,28 @@ export default class Main extends Component {
     this.setName();
   }
 
+  setName() {
+    const newName = this.state.name.split(' ');
+    const firstName = newName[0];
+    const lastName = newName[1];
+    this.setState({ url: `http://api.icndb.com/jokes/random?escape=javascript&firstName=
+      ${firstName}&lastName=${lastName}` },
+      FetchJoke(this.state.url, this.getJokes));
+  }
+
   handleReset() {
     console.log('handleReset');
   }
 
-  handleExplicit() {
-    console.log('handleExplicit');
+  setExplicit() {
+    this.state.explicit === true ?
+    this.setState({ url: this.state.url + `&exclude=[explicit]` }) :
+    this.setState({ url: 'http://api.icndb.com/jokes/random/' });
   }
 
-
+  handleExplicit() {
+    this.setState({ explicit: !this.state.explicit });
+  }
 
   render() {
     return (
