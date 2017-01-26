@@ -9,6 +9,7 @@ const Jokes = ({ jokes }) => {
           <li
             key={i}>
             {joke}
+            <button>Star</button>
         </li>)}
       </ul>
     </div>
