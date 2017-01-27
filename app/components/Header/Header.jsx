@@ -1,5 +1,4 @@
 import React from 'react';
-// import './header-style.css';
 import SettingsButton from './SettingsButton';
 
 const Header = ({ handleSettings }) => {

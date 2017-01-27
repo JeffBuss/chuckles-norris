@@ -6,7 +6,7 @@ const SettingsButton = (props) => {
     return (
       <Link to='/jokes'>
         <input
-          className='settings-button'
+          className='settings-button button'
           type='submit'
           value='Jokes'
           />
@@ -16,7 +16,7 @@ const SettingsButton = (props) => {
   return (
     <Link to='/settings'>
       <input
-        className='settings-button'
+        className='settings-button button'
         type='submit'
         value='Settings'
         />

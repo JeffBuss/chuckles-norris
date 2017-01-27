@@ -27,7 +27,7 @@ $cardBG: rbga(0, 0, 0, 0.2);
   font-family: $bodyFont;
   background: $bodyBG;
   color: white;
-  height: 100vh;
+  height: 200vh;
   padding-top: .5vmin;
 }
 
@@ -41,14 +41,7 @@ $cardBG: rbga(0, 0, 0, 0.2);
   margin: 1vmax;
 }
 
-@mixin cardStyles {
-  background-color: rgb(29, 53, 63);
-  max-width: 30vw;
-  max-height: 10vh;
-  padding: 1vw;
-}
-
-button {
+.button {
   @include buttonStyles;
 }
 
@@ -56,9 +49,8 @@ input {
   @include inputStyles;
 }
 
-// /*favorite*/
-//
 // /*header*/
+
 .header {
   @include headerStyles;
 }
@@ -67,18 +59,43 @@ input {
   color: white;
   font-size: 50px;
 }
-// /*joke*/
-//
+
+// /*jokes*/
 
 .joke-list {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .joke-card {
-  @include cardStyles;
+  background-color: rgba(0,0,0,0.2);
+  color: white;
+  padding: 15px;
+  margin: 8px;
+  display: flex;
+  flex-grow: 1;
+  max-width: 28%;
+  position: relative;
 }
 
-// jokes-input
+.favorites-star {
+  border: none;
+  background-color: rgba(0,0,0,0);
+  font-size: 20px;
+  color: white;
+  outline: none;
+  position: absolute;
+  bottom: 0;
+  right:0;
+  &:hover {
+    cursor: pointer;
+    color: gold;
+ }
+}
+
+// joke-input
+
 .jokes-input-field {
   display: flex;
   flex-direction: column;
@@ -90,21 +107,20 @@ input {
   width: 16vw;
   height: 5.5vh;
 }
+
 .jokes-input {
   flex-direction: row;
   width: 3vw;
   height: 5vh;
 }
 
-
 .favorites-button {
-  position: relative;
-  margin: auto;
-  height: 3vw;
-  width: 9vw;
+  height: 4vh;
+  width: 8vw;
 }
 
 // /*main*/
+
 .main {
   @include bodyStyles;
 }
@@ -148,6 +164,7 @@ input {
 
 
 // settings button
+
 .settings-button {
   border-radius: 50%;
   border-style: none;

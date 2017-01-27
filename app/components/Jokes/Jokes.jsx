@@ -19,6 +19,7 @@ const Jokes = (props) => {
             {joke}
             <button
               onClick={() => props.setFavorites({ joke })}
+              className='favorites-star'
             >★</button>
         </li>)}
       </ul>

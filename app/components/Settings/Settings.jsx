@@ -12,11 +12,11 @@ const Settings = (props) => {
         </input>
         <button
           onClick={props.handleNameSet}
-          className='set-button'
+          className='set-button button'
           >Set</button>
         <button
           onClick={props.handleReset}
-          className='reset-button'
+          className='reset-button button'
           >Reset</button>
       </div>
       <div className='explicit-controls'>

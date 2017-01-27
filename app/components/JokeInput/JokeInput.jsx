@@ -18,7 +18,7 @@ const JokeInput = (props) => {
         onKeyUp={props.handleKeyUp}
         />
       </div>
-      <Link to='/favorites button'>
+      <Link to='/favorites'>
         <button
           className='favorites-button button'
           >Favorites</button>

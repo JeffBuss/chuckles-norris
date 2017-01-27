@@ -3,9 +3,6 @@ import { render } from 'react-dom';
 import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
 
 import Header from '../Header/Header';
-// import JokeInput from '../JokeInput/JokeInput';
-import FavoriteButton from '../FavoriteButton/FavoriteButton';
-import JokeCount from '../JokeCount/JokeCount';
 import FetchJoke from '../Helpers/FetchJoke';
 import Jokes from '../Jokes/Jokes';
 import Settings from '../Settings/Settings';
@@ -32,7 +29,6 @@ export default class Main extends Component {
     this.handleReset = this.handleReset.bind(this);
     this.handleExplicit = this.handleExplicit.bind(this);
     this.setFavorites = this.setFavorites.bind(this);
-    // this.handleFavorites = this.handleFavorites.bind(this);
   }
 
   componentDidMount() {
@@ -69,7 +65,12 @@ export default class Main extends Component {
   }
 
   handleReset() {
-    console.log('handleReset');
+    this.setState({ jokes: [] });
+    this.setState({ favorites: [] });
+    this.setState({ jokesCount: 5 });
+    this.setState({ url: 'http://api.icndb.com/jokes/random' });
+    this.setState({ name: '' });
+    this.setState({ explicit: false });
   }
 
   setExplicit() {
@@ -82,15 +83,10 @@ export default class Main extends Component {
     this.setState({ explicit: !this.state.explicit });
   }
 
-  // handleFavorites() {
-  //   console.log(this.state.favorites);
-  // }
-
   setFavorites(joke) {
     let newFavs = this.state.favorites;
     newFavs.push(joke);
     this.setState({ favorites: newFavs });
-    console.log(this.state.favorites);
   }
 
   render() {
@@ -100,7 +96,6 @@ export default class Main extends Component {
       handleClick: this.handleClick,
       handleNameSet: this.handleNameSet,
       setFavorites: this.setFavorites,
-      // handleFavorites: this.handleFavorites,
       handleName: this.handleName,
       handleReset: this.handleReset,
       handleExplicit: this.handleExplicit,
