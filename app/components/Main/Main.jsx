@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 
 import Header from '../Header/Header';
-import JokeButton from '../JokeButton/JokeButton';
+// import JokeInput from '../JokeInput/JokeInput';
 import FavoriteButton from '../FavoriteButton/FavoriteButton';
 import JokeCount from '../JokeCount/JokeCount';
 import FetchJoke from '../Helpers/FetchJoke';
@@ -31,6 +31,7 @@ export default class Main extends Component {
     this.handleNameSet = this.handleNameSet.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.handleExplicit = this.handleExplicit.bind(this);
+    this.handleFavorites = this.handleFavorites.bind(this);
   }
 
   componentDidMount() {
@@ -50,11 +51,12 @@ export default class Main extends Component {
   }
 
   handleClick() {
-    FetchJoke(this.state.url, this.state.jokesCount, this.getJokes);
+    // FetchJoke(this.state.url, this.state.jokesCount, this.getJokes);
+    console.log('new jokes');
   }
 
   handleSettings() {
-    console.log('handleSettings');
+    console.log('handleFavorites');
   }
 
   handleName(e) {
@@ -88,30 +90,23 @@ export default class Main extends Component {
     this.setState({ explicit: !this.state.explicit });
   }
 
+  handleFavorites() {
+    console.log('handlefavorites');
+  }
+
   render() {
+    let clone = React.cloneElement(this.props.children, {
+      handleChange: this.handleChange,
+      handleKeyUp: this.handleKeyUp,
+      handleClick: this.handleClick,
+      jokes: this.state.jokes,
+      handleFavorites: this.handleFavorites,
+    });
     return (
       <div>
         <Header />
         <span>{this.state.randomJoke}</span><br/>
-        <JokeCount
-          handleChange={this.handleChange}
-          handleKeyUp={(e) => {}}
-        />
-        <JokeButton
-          handleClick={this.handleClick}
-        />
-        <FavoriteButton />
-        <Settings
-          handleSettings={this.handleSettings}
-          handleName={this.handleName}
-          handleNameSet={this.handleNameSet}
-          handleReset={this.handleReset}
-          handleExplicit={this.handleExplicit}
-        />
-        <Favorites />
-        <Jokes
-          jokes={this.state.jokes}
-        />
+        {clone}
       </div>
     );
   }

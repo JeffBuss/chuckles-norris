@@ -62,16 +62,19 @@
 
 	var _Main2 = _interopRequireDefault(_Main);
 
-	var _Jokes = __webpack_require__(245);
+	var _Jokes = __webpack_require__(244);
 
 	var _Jokes2 = _interopRequireDefault(_Jokes);
 
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	var _Settings = __webpack_require__(247);
 
-	// import Header from '../Header/Header';
-	// import JokeButton from '../JokeButton/JokeButton';
-	// import FavoriteButton from '../FavoriteButton/FavoriteButton';
-	// import JokeCount from '../JokeCount/JokeCount';
+	var _Settings2 = _interopRequireDefault(_Settings);
+
+	var _JokeInput = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./components/JokeInput/JokeInput\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+	var _JokeInput2 = _interopRequireDefault(_JokeInput);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRouter.Router,
@@ -79,11 +82,9 @@
 	  _react2.default.createElement(
 	    _reactRouter.Route,
 	    { path: '/', component: _Main2.default },
-	    _react2.default.createElement(
-	      _reactRouter.Route,
-	      { path: 'jokes' },
-	      _react2.default.createElement(_reactRouter.IndexRoute, { component: _Jokes2.default })
-	    )
+	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _JokeInput2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: 'jokes', component: _Jokes2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: 'settings', component: _Settings2.default })
 	  )
 	), document.getElementById('root'));
 
@@ -26569,8 +26570,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../node_modules/css-loader/index.js!./styles.css", function() {
-				var newContent = require("!!./../node_modules/css-loader/index.js!./styles.css");
+			module.hot.accept("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js!./styles.scss", function() {
+				var newContent = require("!!./../node_modules/css-loader/index.js!./../node_modules/sass-loader/index.js!./styles.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -26588,7 +26589,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  background: #fafafa;\n  font-family: sans-serif;\n}\n", ""]);
+	exports.push([module.id, "body {\n  background-color: #fafafa;\n  font-family: sans-serif; }\n", ""]);
 
 	// exports
 
@@ -26923,21 +26924,29 @@
 
 	var _Header2 = _interopRequireDefault(_Header);
 
-	var _JokeButton = __webpack_require__(241);
-
-	var _JokeButton2 = _interopRequireDefault(_JokeButton);
-
-	var _FavoriteButton = __webpack_require__(242);
+	var _FavoriteButton = __webpack_require__(241);
 
 	var _FavoriteButton2 = _interopRequireDefault(_FavoriteButton);
 
-	var _JokeCount = __webpack_require__(243);
+	var _JokeCount = __webpack_require__(242);
 
 	var _JokeCount2 = _interopRequireDefault(_JokeCount);
 
-	var _FetchJoke = __webpack_require__(244);
+	var _FetchJoke = __webpack_require__(243);
 
 	var _FetchJoke2 = _interopRequireDefault(_FetchJoke);
+
+	var _Jokes = __webpack_require__(244);
+
+	var _Jokes2 = _interopRequireDefault(_Jokes);
+
+	var _Settings = __webpack_require__(247);
+
+	var _Settings2 = _interopRequireDefault(_Settings);
+
+	var _Favorites = __webpack_require__(248);
+
+	var _Favorites2 = _interopRequireDefault(_Favorites);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -26946,6 +26955,8 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	// import JokeInput from '../JokeInput/JokeInput';
+
 
 	var Main = function (_Component) {
 	  _inherits(Main, _Component);
@@ -26960,12 +26971,21 @@
 	      jokes: [],
 	      favorites: [],
 	      jokesCount: 5,
-	      url: 'http://api.icndb.com/jokes/random/'
+	      url: 'http://api.icndb.com/jokes/random',
+	      name: '',
+	      explicit: false
 	    };
 	    _this.getRandomJoke = _this.getRandomJoke.bind(_this);
 	    _this.getJokes = _this.getJokes.bind(_this);
 	    _this.handleChange = _this.handleChange.bind(_this);
 	    _this.handleClick = _this.handleClick.bind(_this);
+	    _this.handleSettings = _this.handleSettings.bind(_this);
+	    _this.handleName = _this.handleName.bind(_this);
+	    _this.handleNameSet = _this.handleNameSet.bind(_this);
+	    _this.handleReset = _this.handleReset.bind(_this);
+	    _this.handleExplicit = _this.handleExplicit.bind(_this);
+	    _this.handleFavorites = _this.handleFavorites.bind(_this);
+
 	    return _this;
 	  }
 
@@ -26995,11 +27015,62 @@
 	      (0, _FetchJoke2.default)(this.state.url, this.state.jokesCount, this.getJokes);
 	    }
 	  }, {
+	    key: 'handleSettings',
+	    value: function handleSettings() {
+	      console.log('handleFavorites');
+	    }
+	  }, {
+	    key: 'handleName',
+	    value: function handleName(e) {
+	      this.setState({ name: e.target.value });
+	    }
+	  }, {
+	    key: 'handleNameSet',
+	    value: function handleNameSet() {
+	      this.setName();
+	    }
+	  }, {
+	    key: 'setName',
+	    value: function setName() {
+	      var newName = this.state.name.split(' ');
+	      var firstName = newName[0];
+	      var lastName = newName[1];
+	      this.setState({ url: 'http://api.icndb.com/jokes/random?escape=javascript&firstName=\n      ' + firstName + '&lastName=' + lastName }, (0, _FetchJoke2.default)(this.state.url, this.getJokes));
+	    }
+	  }, {
+	    key: 'handleReset',
+	    value: function handleReset() {
+	      console.log('handleReset');
+	    }
+	  }, {
+	    key: 'setExplicit',
+	    value: function setExplicit() {
+	      this.state.explicit === true ? this.setState({ url: this.state.url + '&exclude=[explicit]' }) : this.setState({ url: 'http://api.icndb.com/jokes/random/' });
+	    }
+	  }, {
+	    key: 'handleExplicit',
+	    value: function handleExplicit() {
+	      this.setState({ explicit: !this.state.explicit });
+	    }
+	  }, {
+	    key: 'handleFavorites',
+	    value: function handleFavorites() {
+	      console.log('handlefavorites');
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var clone = _react2.default.cloneElement(this.props.children, {
+	        handleChange: this.handleChange,
+	        handleKeyUp: this.handleKeyUp,
+	        handleClick: this.handleClick,
+	        jokes: this.state.jokes,
+	        handleFavorites: this.handleFavorites
+	      });
 	      return _react2.default.createElement(
 	        'div',
 	        null,
+	        clone,
 	        _react2.default.createElement(_Header2.default, null),
 	        _react2.default.createElement(
 	          'span',
@@ -27007,14 +27078,17 @@
 	          this.state.randomJoke
 	        ),
 	        _react2.default.createElement('br', null),
-	        _react2.default.createElement(_JokeCount2.default, {
-	          handleChange: this.handleChange,
-	          handleKeyUp: function handleKeyUp(e) {}
+	        _react2.default.createElement(_Settings2.default, {
+	          handleSettings: this.handleSettings,
+	          handleName: this.handleName,
+	          handleNameSet: this.handleNameSet,
+	          handleReset: this.handleReset,
+	          handleExplicit: this.handleExplicit
 	        }),
-	        _react2.default.createElement(_JokeButton2.default, {
-	          handleClick: this.handleClick
-	        }),
-	        _react2.default.createElement(_FavoriteButton2.default, null)
+	        _react2.default.createElement(_Favorites2.default, null),
+	        _react2.default.createElement(_Jokes2.default, {
+	          jokes: this.state.jokes
+	        })
 	      );
 	    }
 	  }]);
@@ -27116,34 +27190,6 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var JokeButton = function JokeButton(_ref) {
-	  var handleClick = _ref.handleClick;
-
-	  return _react2.default.createElement(
-	    'button',
-	    { onClick: handleClick },
-	    'New Jokes'
-	  );
-	};
-
-	exports.default = JokeButton;
-
-/***/ },
-/* 242 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 	var handleClick = function handleClick() {
 	  console.log('FavoriteButton');
 	};
@@ -27161,7 +27207,7 @@
 	exports.default = FavoriteButton;
 
 /***/ },
-/* 243 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27189,7 +27235,7 @@
 	exports.default = JokeCount;
 
 /***/ },
-/* 244 */
+/* 243 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -27214,6 +27260,54 @@
 	exports.default = FetchJoke;
 
 /***/ },
+/* 244 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Joke = __webpack_require__(245);
+
+	var _Joke2 = _interopRequireDefault(_Joke);
+
+	var _JokeInput = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../JokeInput/JokeInput\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+	var _JokeInput2 = _interopRequireDefault(_JokeInput);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Jokes = function Jokes(_ref) {
+	  var jokes = _ref.jokes;
+
+	  return _react2.default.createElement(
+	    "div",
+	    null,
+	    _react2.default.createElement(JokeButton, null),
+	    _react2.default.createElement(
+	      "ul",
+	      null,
+	      jokes.map(function (joke, i) {
+	        return _react2.default.createElement(
+	          "li",
+	          {
+	            key: i },
+	          joke
+	        );
+	      })
+	    )
+	  );
+	};
+
+	exports.default = Jokes;
+
+/***/ },
 /* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -27227,23 +27321,99 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Joke = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./Joke/Joke\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Joke = function Joke(props) {
+	  return _react2.default.createElement(
+	    "div",
+	    { className: "joke-card" },
+	    props.joke
+	  );
+	};
+
+	exports.default = Joke;
+
+/***/ },
+/* 246 */,
+/* 247 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Settings = function Settings(_ref) {
+	  var handleSettings = _ref.handleSettings,
+	      handleName = _ref.handleName,
+	      handleNameSet = _ref.handleNameSet,
+	      handleReset = _ref.handleReset,
+	      handleExplicit = _ref.handleExplicit;
+
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(
+	      'button',
+	      { onClick: handleSettings },
+	      'Settings'
+	    ),
+	    _react2.default.createElement('input', {
+	      onChange: handleName }),
+	    _react2.default.createElement(
+	      'button',
+	      { onClick: handleNameSet },
+	      'Set'
+	    ),
+	    _react2.default.createElement(
+	      'button',
+	      { onClick: handleReset },
+	      'Reset'
+	    ),
+	    _react2.default.createElement('input', { onChange: handleExplicit, type: 'checkbox', value: '' })
+	  );
+	};
+
+	exports.default = Settings;
+
+/***/ },
+/* 248 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Joke = __webpack_require__(245);
 
 	var _Joke2 = _interopRequireDefault(_Joke);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var Jokes = function Jokes(props) {
+	var Favorites = function Favorites(_ref) {
+	  var favorites = _ref.favorites;
+
 	  return _react2.default.createElement(
 	    "div",
 	    null,
-	    props.data.map(function (joke, i) {
-	      return _react2.default.createElement(_Joke2.default, { key: joke.id, i: i, joke: joke.joke });
-	    })
+	    "favorite jokes"
 	  );
 	};
 
-	exports.default = Jokes;
+	exports.default = Favorites;
 
 /***/ }
 /******/ ]);
