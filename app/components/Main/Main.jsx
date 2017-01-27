@@ -32,7 +32,7 @@ export default class Main extends Component {
     this.handleReset = this.handleReset.bind(this);
     this.handleExplicit = this.handleExplicit.bind(this);
     this.setFavorites = this.setFavorites.bind(this);
-    this.handleFavorites = this.handleFavorites.bind(this);
+    // this.handleFavorites = this.handleFavorites.bind(this);
   }
 
   componentDidMount() {
@@ -82,9 +82,9 @@ export default class Main extends Component {
     this.setState({ explicit: !this.state.explicit });
   }
 
-  handleFavorites() {
-    console.log(this.state.favorites);
-  }
+  // handleFavorites() {
+  //   console.log(this.state.favorites);
+  // }
 
   setFavorites(joke) {
     let newFavs = this.state.favorites;
@@ -100,7 +100,7 @@ export default class Main extends Component {
       handleClick: this.handleClick,
       handleNameSet: this.handleNameSet,
       setFavorites: this.setFavorites,
-      handleFavorites: this.handleFavorites,
+      // handleFavorites: this.handleFavorites,
       handleName: this.handleName,
       handleReset: this.handleReset,
       handleExplicit: this.handleExplicit,
