@@ -2,15 +2,19 @@ import React from "react";
 import Joke from "../Joke/Joke"
 import JokeInput from '../JokeInput/JokeInput';
 
-const Jokes = ({ jokes }) => {
+const Jokes = (props) => {
   return (
     <div>
-      <JokeInput />
+      <JokeInput
+        handleClick={props.handleClick}
+        handleFavorites={props.handleFavorites}
+      />
       <ul>
-        {jokes.map((joke, i) =>
+        {props.jokes.map((joke, i) =>
           <li
             key={i}>
             {joke}
+            <button>★</button>
         </li>)}
       </ul>
     </div>

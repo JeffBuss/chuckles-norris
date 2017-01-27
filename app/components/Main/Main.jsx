@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
 
 import Header from '../Header/Header';
 // import JokeInput from '../JokeInput/JokeInput';
@@ -51,8 +52,7 @@ export default class Main extends Component {
   }
 
   handleClick() {
-    // FetchJoke(this.state.url, this.state.jokesCount, this.getJokes);
-    console.log('new jokes');
+    FetchJoke(this.state.url, this.state.jokesCount, this.getJokes);
   }
 
   handleSettings() {
@@ -99,8 +99,11 @@ export default class Main extends Component {
       handleChange: this.handleChange,
       handleKeyUp: this.handleKeyUp,
       handleClick: this.handleClick,
-      jokes: this.state.jokes,
       handleFavorites: this.handleFavorites,
+      jokes: this.state.jokes,
+      jokesCount: this.state.jokesCount,
+      url: this.state.url,
+      getJokes: this.state.getJokes,
     });
     return (
       <div>
