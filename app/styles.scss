@@ -1,11 +1,6 @@
-body {
-  background-color: #fafafa;
-  font-family: sans-serif;
-}
-
 /*variables*/
 $bodyFont: 'Karla', sans-serif;
-$headerFont: 'Bungee Shade', cursive;
+$headerFont: 'Bungee Shade', sans-serif;
 $headerBG: rgba(255, 255, 255, 0.3);
 $bodyBG: rgb(29,53,63);
 $cardBG: rbga(0, 0, 0, 0.2);
@@ -15,19 +10,16 @@ $cardBG: rbga(0, 0, 0, 0.2);
         cursor: pointer;
         background-color: rgb(255, 255, 255);
     }
+  &:focus{
+    outline: none;
+  }
   background-color: rgb(192, 192, 192);
-  margin: 1vw;
-  width: 23vw;
-  height: 5vh;
   border-radius: 5px;
   border-style: none;
-  max-width: 150px;
 }
 
 @mixin inputStyles {
-  margin: 1vw;
-  width: 50%;
-  height: 5vh;
+  margin: .5vw;
   border-radius: 5px;
 }
 
@@ -35,45 +27,142 @@ $cardBG: rbga(0, 0, 0, 0.2);
   font-family: $bodyFont;
   background: $bodyBG;
   color: white;
+  height: 100vh;
+  padding-top: .5vmin;
 }
 
 @mixin headerStyles {
   font-family: $headerFont;
-  background-color: $headerBG;
-  font-size: 25px;
-  color: white;
+  background: $headerBG;
+  height: 25vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1vmax;
 }
 
 @mixin cardStyles {
-  background-color: red;
+  background-color: rgb(29, 53, 63);
+  max-width: 30vw;
+  max-height: 10vh;
+  padding: 1vw;
+}
+
+button {
+  @include buttonStyles;
+}
+
+input {
+  @include inputStyles;
 }
 
 // /*favorite*/
 //
 // /*header*/
-//
+.header {
+  @include headerStyles;
+}
+
+.title {
+  color: white;
+  font-size: 50px;
+}
 // /*joke*/
 //
-.joke-card {
-  background-color: red;
 
+.joke-list {
+  display: flex;
 }
-//
-// .favorite-star {
-//   background-color: red;
-//
-// }
-//
-// /*jokes*/
-//
-// /*jokebutton*/
-//
-// /*jokecount*/
-//
+
+.joke-card {
+  @include cardStyles;
+}
+
+// jokes-input
+.jokes-input-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.jokes-button {
+  width: 16vw;
+  height: 5.5vh;
+}
+.jokes-input {
+  flex-direction: row;
+  width: 3vw;
+  height: 5vh;
+}
+
+
+.favorites-button {
+  position: relative;
+  margin: auto;
+  height: 3vw;
+  width: 9vw;
+}
+
 // /*main*/
-//
-// random-joke {
-//   border: 1px dotted white;
-// }
-//
+.main {
+  @include bodyStyles;
+}
+
+.random-joke {
+  border: 1px dotted white;
+  border-radius: 5px;
+  padding: 2vmax;
+  width: 80%;
+  text-align: center;
+  margin-top: 1vh;
+  margin: auto;
+}
+
 // /*settings*/
+
+.settings-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.name-input {
+  height: 3vh;
+}
+
+.set-button {
+  height: 3.5vh;
+  margin: .75vw;
+}
+
+.reset-button {
+  height: 3.5vh;
+}
+
+.set-controls .explicit-controls {
+  display: inline;
+  flex-direction: row;
+}
+
+
+// settings button
+.settings-button {
+  border-radius: 50%;
+  border-style: none;
+  height: 6vmax;
+  width: 6vmax;
+  text-align: center;
+  font-size: 1vmax;
+  position: absolute;
+  top: 4vmax;
+  right: 5vmax;
+  &:hover {
+        cursor: pointer;
+        background-color: rgb(255, 255, 255);
+    }
+  &:focus{
+    outline: none;
+  }
+}

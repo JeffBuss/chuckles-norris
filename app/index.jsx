@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { render } from 'react-dom';
 import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
-import './styles.scss';
+import './reset'
+import './styles';
 
 import Main from './components/Main/Main';
 import Jokes from './components/Jokes/Jokes';

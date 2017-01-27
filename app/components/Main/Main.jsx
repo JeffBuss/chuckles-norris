@@ -112,11 +112,11 @@ export default class Main extends Component {
       favorites: this.state.favorites,
     });
     return (
-      <div>
+      <div className='main'>
         <Header
           handleSettings={this.handleSettings}
         />
-        <span>{this.state.randomJoke}</span><br/>
+        <p className='random-joke'>{this.state.randomJoke}</p><br/>
         {clone}
       </div>
     );
