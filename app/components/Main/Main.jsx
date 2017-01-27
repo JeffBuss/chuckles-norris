@@ -61,7 +61,7 @@ export default class Main extends Component {
     const lastName = newName[1];
     this.setState({ url: `http://api.icndb.com/jokes/random/${this.state.JokeCount}?escape=javascript&firstName=
       ${firstName}&lastName=${lastName}` },
-      FetchJoke(this.state.url, this.getJokes));
+      FetchJoke(this.state.url, this.state.jokesCount, this.getJokes));
   }
 
   handleReset() {

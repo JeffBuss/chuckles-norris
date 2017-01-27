@@ -10,6 +10,7 @@ const Jokes = (props) => {
         setFavorites={props.setFavorites}
         handleChange={props.handleChange}
         handleKeyUp={props.handleKeyUp}
+        favorites={props.favorites}
       />
       <ul className='joke-list'>
         {props.jokes.map((joke, i) =>

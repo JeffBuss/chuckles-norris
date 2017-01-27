@@ -16,7 +16,7 @@ const Favorites = (props) => {
           <li
             className='joke-card'
             key={i}>
-            {fav.joke}
+            {props.favorites.length !== 0 ? fav.joke : <p>yeah...I hate Chuck Norris Jokes too</p>}
             <button
               onClick={() => props.setFavorites({ fav })}
               className='favorites-star'
