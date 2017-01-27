@@ -1,15 +1,14 @@
 import React from 'react';
 
-const Settings = ({ handleSettings, handleName, handleNameSet, handleReset, handleExplicit }) => {
+const Settings = (props) => {
   return (
     <div>
-      <button onClick={handleSettings}>Settings</button>
       <input
-        onChange={handleName}>
+        onChange={props.handleName}>
       </input>
-      <button onClick={handleNameSet}>Set</button>
-      <button onClick={handleReset}>Reset</button>
-      <input onChange={handleExplicit} type='checkbox' value=''/>
+      <button onClick={props.handleNameSet}>Set</button>
+      <button onClick={props.handleReset}>Reset</button>
+      <input onChange={props.handleExplicit} type='checkbox' value=''/>
     </div>
   );
 };

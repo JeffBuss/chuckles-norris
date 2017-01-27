@@ -1,10 +1,10 @@
 // import React from 'react';
 //
-// const Joke = (props) => {
+// const Favorite = (props) => {
 //   return (
 //     <div className='joke-card'>
-//       {props.joke}
+//       {props.fav}
 //     </div>);
 // };
 //
-// export default Joke;
+// export default Favorite;

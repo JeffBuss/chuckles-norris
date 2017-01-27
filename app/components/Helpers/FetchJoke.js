@@ -1,13 +1,13 @@
 const FetchJoke = (url, jokesCount, getRandomJoke) => {
-  fetch(url + '/' + jokesCount)
+  fetch(url + '/' + jokesCount + '?escape=javascript')
   .then((response) => {
-    return (response.json());
+    return (response.json())
   }).then((data) => {
-    return (data.value);
+    return (data.value)
   }).then((array) => {
-    return (array.map(i => i.joke));
+    return (array.map(i => i.joke))
   }).then(((jokes) => {
-    return (getRandomJoke(jokes));
+    return (getRandomJoke(jokes))
   }));
 };
 

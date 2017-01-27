@@ -1,12 +1,14 @@
 import React from 'react';
-import './header-style.css
-import 
+// import './header-style.css';
+import SettingsButton from './SettingsButton';
 
-const Header = () => {
+const Header = ({ handleSettings }) => {
   return (
     <div className="Header">
       <h1>Chuckles Norris</h1>
-      <Settings />
+      <SettingsButton
+        handleSettings={handleSettings}
+      />
     </div>
   );
 };

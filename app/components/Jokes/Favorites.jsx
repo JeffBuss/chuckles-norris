@@ -1,10 +1,25 @@
-import React from "react";
-import Joke from "../Joke/Joke"
+import React from 'react';
+import JokeInput from '../JokeInput/JokeInput';
 
-const Favorites = ({ favorites }) => {
+const Favorites = (props) => {
   return (
     <div>
-      favorite jokes
+      <JokeInput
+        handleClick={props.handleClick}
+        setFavorites={props.setFavorites}
+        handleChange={props.handleChange}
+        handleKeyUp={props.handleKeyUp}
+      />
+      <ul>
+        {props.favorites.map((fav, i) =>
+          <li
+            key={i}>
+            {fav}
+            <button
+              onClick={() => props.setFavorites({ fav })}
+            >★</button>
+        </li>)}
+      </ul>
     </div>
   );
 };

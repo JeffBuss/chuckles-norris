@@ -27,11 +27,11 @@ export default class Main extends Component {
     this.getJokes = this.getJokes.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    this.handleSettings = this.handleSettings.bind(this);
     this.handleName = this.handleName.bind(this);
     this.handleNameSet = this.handleNameSet.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.handleExplicit = this.handleExplicit.bind(this);
+    this.setFavorites = this.setFavorites.bind(this);
     this.handleFavorites = this.handleFavorites.bind(this);
   }
 
@@ -55,23 +55,15 @@ export default class Main extends Component {
     FetchJoke(this.state.url, this.state.jokesCount, this.getJokes);
   }
 
-  handleSettings() {
-    console.log('handleFavorites');
-  }
-
   handleName(e) {
     this.setState({ name: e.target.value });
   }
 
   handleNameSet() {
-    this.setName();
-  }
-
-  setName() {
     const newName = this.state.name.split(' ');
     const firstName = newName[0];
     const lastName = newName[1];
-    this.setState({ url: `http://api.icndb.com/jokes/random?escape=javascript&firstName=
+    this.setState({ url: `http://api.icndb.com/jokes/random/${this.state.JokeCount}?escape=javascript&firstName=
       ${firstName}&lastName=${lastName}` },
       FetchJoke(this.state.url, this.getJokes));
   }
@@ -91,7 +83,14 @@ export default class Main extends Component {
   }
 
   handleFavorites() {
-    console.log('handlefavorites');
+    console.log(this.state.favorites);
+  }
+
+  setFavorites(joke) {
+    let newFavs = this.state.favorites;
+    newFavs.push(joke);
+    this.setState({ favorites: newFavs });
+    console.log(this.state.favorites);
   }
 
   render() {
@@ -99,15 +98,24 @@ export default class Main extends Component {
       handleChange: this.handleChange,
       handleKeyUp: this.handleKeyUp,
       handleClick: this.handleClick,
+      handleNameSet: this.handleNameSet,
+      setFavorites: this.setFavorites,
       handleFavorites: this.handleFavorites,
+      handleName: this.handleName,
+      handleReset: this.handleReset,
+      handleExplicit: this.handleExplicit,
+
       jokes: this.state.jokes,
       jokesCount: this.state.jokesCount,
       url: this.state.url,
       getJokes: this.state.getJokes,
+      favorites: this.state.favorites,
     });
     return (
       <div>
-        <Header />
+        <Header
+          handleSettings={this.handleSettings}
+        />
         <span>{this.state.randomJoke}</span><br/>
         {clone}
       </div>

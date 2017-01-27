@@ -1,5 +1,4 @@
-import React from "react";
-import Joke from "../Joke/Joke"
+import React from 'react';
 import JokeInput from '../JokeInput/JokeInput';
 
 const Jokes = (props) => {
@@ -7,14 +6,18 @@ const Jokes = (props) => {
     <div>
       <JokeInput
         handleClick={props.handleClick}
-        handleFavorites={props.handleFavorites}
+        setFavorites={props.setFavorites}
+        handleChange={props.handleChange}
+        handleKeyUp={props.handleKeyUp}
       />
       <ul>
         {props.jokes.map((joke, i) =>
           <li
             key={i}>
             {joke}
-            <button>★</button>
+            <button
+              onClick={() => props.setFavorites({ joke })}
+            >★</button>
         </li>)}
       </ul>
     </div>

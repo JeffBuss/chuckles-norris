@@ -1,11 +1,27 @@
 import React from 'react';
+import { Router, Route, Link, IndexRoute, browserHistory } from 'react-router';
 
-const Settings = (props) => {
+const SettingsButton = (props) => {
+  if (window.location.pathname === '/settings') {
+    return (
+      <Link to='/jokes'>
+        <input
+          className='settings-button'
+          type='submit'
+          value='Jokes'
+          />
+      </Link>
+    );
+  }
   return (
-    <div>
-      <button onClick={props.handleSettings}>Settings</button>
-    </div>
+    <Link to='/settings'>
+      <input
+        className='settings-button'
+        type='submit'
+        value='Settings'
+        />
+    </Link>
   );
 };
 
-export default Settings;
+export default SettingsButton;
