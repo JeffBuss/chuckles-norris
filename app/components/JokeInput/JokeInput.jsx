@@ -1,15 +1,15 @@
 import React from 'react';
 
-const JokeInput = ({ handleChange, handleKeyUp, handleClick, handleFavorites }) => {
+const JokeInput = (props) => {
   return (
     <div>
       <input
       className='num-jokes-input'
-      onChange={handleChange}
-      onKeyUp={handleKeyUp}
+      onChange={props.handleChange}
+      onKeyUp={props.handleKeyUp}
       />
-      <button onClick={handleClick}>New Jokes</button>
-      <button onClick={handleFavorites}>Favorites</button>
+      <button onClick={props.handleClick}>New Jokes</button>
+      <button onClick={props.handleFavorites}>Favorites</button>
     </div>
   );
 };

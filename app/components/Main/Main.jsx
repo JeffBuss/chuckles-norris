@@ -95,7 +95,7 @@ export default class Main extends Component {
   }
 
   render() {
-    let clone = React.cloneElement(this.props.children, {
+    const clone = React.cloneElement(this.props.children, {
       handleChange: this.handleChange,
       handleKeyUp: this.handleKeyUp,
       handleClick: this.handleClick,
